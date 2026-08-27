@@ -28,15 +28,15 @@ const (
 	corefile  = "/usr/local/etc/coredns/Corefile"
 	coredns   = "/usr/local/bin/coredns"
 	zonesDir  = "/usr/local/etc/coredns/zones"
-    adminUser = os.Getenv("COREDNS_MANAGER_USER")
-    adminPass = os.Getenv("COREDNS_MANAGER_PASSWORD")
+	adminUser = "admin"
+	adminPass = "change-me-now"
 )
 
 var (
-	templateDir := os.Getenv("COREDNS_MANAGER_TEMPLATE_DIR")
-	if templateDir == "" {
-		templateDir = "/usr/local/share/coredns-manager/templates"
-	}
+	loginT   = template.Must(template.ParseFiles("templates/login.html"))
+	indexT   = template.Must(template.ParseFiles("templates/index.html"))
+	zonesT   = template.Must(template.ParseFiles("templates/zones.html"))
+	zoneT    = template.Must(template.ParseFiles("templates/zone.html"))
 	mu       sync.RWMutex
 	sessions = map[string]time.Time{}
 	zoneRE   = regexp.MustCompile(`^[A-Za-z0-9](?:[A-Za-z0-9.-]{0,251}[A-Za-z0-9])?$`)
