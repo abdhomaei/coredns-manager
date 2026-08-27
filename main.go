@@ -29,7 +29,7 @@ const (
 	coredns   = "/usr/local/bin/coredns"
 	zonesDir  = "/usr/local/etc/coredns/zones"
 	adminUser = "admin"
-	adminPass = "change-me-now"
+	adminPass = "admin"
 )
 
 var (
